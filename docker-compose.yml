@@ -1,0 +1,35 @@
+version: "3.5"
+
+services:
+  nginx_php_app:
+    image: andriik/nginx_test
+    ports:
+      - "80:80"
+    volumes:
+      - /opt/for_site:/opt
+    environment:
+      - TEST="sf0wkf39fk340fj34"
+    networks:
+      - app_network
+
+  mysql_app:
+    image: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=some_pass
+    networks:
+      - app_network
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    ports: 
+      - "8080:80"
+    environment:
+      - PMA_HOST=mysql_app
+    networks:
+      - app_network
+
+networks: 
+  app_network:
