@@ -1,0 +1,21 @@
+You need:
+
+- docker
+- laraverl app 
+
+How to use
+
+1. Clone this repo and add files from repo to your site root folde
+2. cd into site root folder
+3. use this commands to manage app:
+     make up - start containers
+     make start - start app in container  (you may need to change commands in Makefie; also don't orget to import db)
+     make down - stop app (don't remove containers)
+     make rm - delete all services and containers
+
+- add 127.0.0.1 site.local into /etc/hosts
+###- add variables from .env.example to .env file and change some of them
+- use 'make up'
+- go into site.local:8080 and export database (user: root, pass: see docker-compose.yml MYSQL_ROOT_PASSWORD variable)
+- use 'make start'
+- enjoy!
